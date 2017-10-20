@@ -1,0 +1,7 @@
+umd_header.config:
+  path: '/admin/config/umd_schoolwide_header/config'
+  defaults:
+    _form: '\Drupal\umd_schoolwide_header\Utility\UmdHeaderConfigForm'
+    _title: 'Configuration for UMD Schoolwide Header'
+  requirements:
+    _permission: 'administer site configuration'

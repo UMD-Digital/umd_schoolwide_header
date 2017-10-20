@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Module file for unical_client module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function umd_schoolwide_header_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.howard_newsroom_client':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (! \Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = array('settings' => $settings);
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Adds js to the page.
+ */
+function umd_schoolwide_header_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] =  'umd_schoolwide_header/umd_header';
+}
+
+
+/**
+ * Implements hook_library_info_alter().
+ *
+ * Dynamically adds css/js to libraries.yml, so we may use the input fields of the module.
+ */
+function umd_schoolwide_header_library_info_alter(&$libraries) {
+  $umd_schoolwide_header_fields = \Drupal::config('umd_schoolwide_header.settings');
+  // Get config fields, so we may modify js
+  $js = $umd_schoolwide_header_fields->get('umd_schoolwide_header.embed');
+  if (isset($js)) {
+    // Strip any embed scripts if they happen to be there.
+    $js = str_replace('<script src="','',$js);
+    $js = str_replace('"></script>','',$js);
+    if (isset($libraries['umd_header'])) {
+      // Unset stock call, and replace with custom, if present.
+      unset($libraries['umd_header']['js']['https://umd-header.umd.edu/build/bundle.js?search=0&search_domain=&events=0&news=0&schools=0&admissions=0&support=0&support_url=&wrapper=1100&sticky=0']);
+      $libraries['umd_header']['js'][$js] = array('type' => 'external', 'preprocess' => false);
+
+    }
+  }
+
+}

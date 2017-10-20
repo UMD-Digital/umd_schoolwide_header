@@ -1,0 +1,6 @@
+name: 'UMD Schoolwide Header'
+type: module
+description: 'Provides an easy way to include the UMD Schoolwide Header.'
+configure: umd_header.config
+package: UMD.EDU
+core: '8.x'

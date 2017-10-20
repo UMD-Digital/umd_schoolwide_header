@@ -1,0 +1,6 @@
+# Add the config page to the menu, under services.
+
+umd_header.config:
+  title: 'UMD Sitewide Header'
+  parent: system.admin_config_services
+  route_name: 'umd_header.config'
