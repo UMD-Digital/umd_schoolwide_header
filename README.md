@@ -1,7 +1,7 @@
 INTRODUCTION
 ------------
 
-Provides a simple interface for adding the UMD Schoolwide Header to Drupal 8 sites
+Provides a simple interface for adding the UMD Schoolwide Header to Drupal 7 sites
 in the University of Maryland system.
 
 This module was created by idfive (http://idfive.com) for the University of Maryland.
@@ -10,14 +10,14 @@ This module was created by idfive (http://idfive.com) for the University of Mary
 INSTALLATION
 ------------
 
-Install as usual, see
-https://www.drupal.org/docs/8/extending-drupal-8/installing-modules for further
-information.
+Install as you would normally install a contributed Drupal module. See:
+https://drupal.org/documentation/install/modules-themes/modules-7
+for further information.
 
 Configuration
 -------------
 
-Add embed code to /admin/config/umd_schoolwide_header/config
+Add embed code to /admin/config/services/umd_schoolwide_header/config
 * This may be added with or without the script tags, the module will strip if needed.
 * A default is provided, so a default configuration will be loaded if left blank.
 

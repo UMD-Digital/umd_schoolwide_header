@@ -1,0 +1,5 @@
+name = UMD Schoolwide Header
+description = Provides an easy way to include the UMD Schoolwide Header.
+core = 7.x
+configure = /admin/config/services/umd_schoolwide_header/config
+package = UMD.EDU

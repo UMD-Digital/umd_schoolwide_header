@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ * Implements various hooks and functions to run the umd_schoolwide_header module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+ function umd_schoolwide_header_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#umd_schoolwide_header':
+
+      $filepath = dirname(__FILE__) . '/README.md';
+      if (file_exists($filepath)) {
+        $readme = file_get_contents($filepath);
+      }
+      else {
+        $filepath = dirname(__FILE__) . '/README.txt';
+        if (file_exists($filepath)) {
+          $readme = file_get_contents($filepath);
+        }
+      }
+      if (!isset($readme)) {
+        return NULL;
+      }
+      if (module_exists('markdown')) {
+        $filters = module_invoke('markdown', 'filter_info');
+        $info = $filters['filter_markdown'];
+
+        if (function_exists($info['process callback'])) {
+          $output = $info['process callback']($readme, NULL);
+        }
+        else {
+          $output = '<pre>' . $readme . '</pre>';
+        }
+      }
+      else {
+        $output = '<pre>' . $readme . '</pre>';
+      }
+
+      return $output;
+  }
+ }
+
+/**
+ * Implements hook_init().
+ */
+function umd_schoolwide_header_init() {
+
+  // Get API URL setting.
+  $embed = variable_get('umd_schoolwide_header_settings_embed');
+
+  // Header JS, if present, if not, add default.
+  if(isset($embed)) {
+    $embed = str_replace('<script src="','',$embed);
+    $embed = str_replace('"></script>','',$embed);
+
+  } else {
+    $embed = 'https://umd-header.umd.edu/build/bundle.js?search=0&search_domain=&events=0&news=0&schools=0&admissions=0&support=0&support_url=&wrapper=1100&sticky=0';
+  }
+
+  drupal_add_js($embed, array('type' => 'external', 'weight' => -20, 'scope' => 'footer'));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function umd_schoolwide_header_menu() {
+
+  $items = array();
+
+  $items['admin/config/services/umd_schoolwide_header/config'] = array(
+    'title' => 'UMD Sitewide Header',
+    'description' => 'Configuration for UMD Schoolwide Header',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('umd_schoolwide_header_form'),
+    'access arguments' => array('administer blocks'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_form().
+ */
+function umd_schoolwide_header_form($form, &$form_state) {
+
+  $form['some_text'] = array(
+    '#markup' => '
+    <p>If you wish to customize the UMD Header, paste the embed code generated from the <a href="https://umd-header.umd.edu/generator/">UMD Header Generator</a> here. You will also need to clear caches for the site in order to show changes.</p>
+    ',
+  );
+
+  // General settings.
+  $form['umd_schoolwide_header_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Settings'
+  );
+
+  // URL of the API.
+  $form['umd_schoolwide_header_settings']['umd_schoolwide_header_settings_embed'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Embed Code'),
+    '#default_value' => variable_get('umd_schoolwide_header_settings_embed', ''),
+    '#description' => t('Snippet from UMD Schoolwide Header Generator.'),
+    '#required' => FALSE
+  );
+
+  return system_settings_form($form);
+}
