@@ -27,17 +27,17 @@ This module can also be added to projects via composer, with something similar t
     "type": "package",
       "package": {
           "name": "UMD-Digital/umd_schoolwide_header",
-          "version": "8x-1.0",
+          "version": "8.1.0",
           "source": {
               "url": "https://github.com/UMD-Digital/umd_schoolwide_header.git",
               "type": "git",
-              "reference": "8x-1.0"
+              "reference": "8.x-1.0"
           },
           "type": "drupal-module"
       }
     },
     "require": {
-        "UMD-Digital/umd_schoolwide_header": "8x-1.0"
+        "UMD-Digital/umd_schoolwide_header": "8.1.0"
     }
   ```
 
