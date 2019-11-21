@@ -1,0 +1,25 @@
+{
+    "name": "umd_digital/umd_schoolwide_header",
+    "type": "drupal-module",
+    "description": "Provides a simple interface for adding the UMD Schoolwide Header to Drupal 8 sites in the University of Maryland system.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "homepage": "https://github.com/UMD-Digital/umd_schoolwide_header/",
+    "minimum-stability": "dev",
+    "authors": [
+      {
+        "name": "Nick Rigby",
+        "homepage": "https://www.drupal.org/u/nickrigby",
+        "role": "Maintainer"
+      },
+      {
+        "name": "Dan Rogers",
+        "homepage": "https://www.drupal.org/u/dan_rogers",
+        "role": "Maintainer"
+      }
+    ],
+    "support": {
+      "issues": "https://github.com/UMD-Digital/umd_schoolwide_header/issues",
+      "source": "https://github.com/UMD-Digital/umd_schoolwide_header/"
+    }
+  }

@@ -11,7 +11,6 @@ VERSION
 
 Please use the latest release for your version of drupal from the [releases page](https://github.com/UMD-Digital/umd_schoolwide_header/releases).
 
-
 INSTALLATION
 ------------
 
@@ -21,25 +20,8 @@ information.
 
 This module can also be added to projects via composer, with something similar to the following (adjust release version as necessary):
 
-```javascript
-  "repositories": {
-    "umd_schoolwide_header": {
-    "type": "package",
-      "package": {
-          "name": "UMD-Digital/umd_schoolwide_header",
-          "version": "8.1.0",
-          "source": {
-              "url": "https://github.com/UMD-Digital/umd_schoolwide_header.git",
-              "type": "git",
-              "reference": "8.x-1.0"
-          },
-          "type": "drupal-module"
-      }
-    },
-    "require": {
-        "UMD-Digital/umd_schoolwide_header": "8.1.0"
-    }
-  ```
+ - `composer require umd_digital/umd_schoolwide_header --prefer-dist`
+ - `drush en umd_schoolwide_header` or enable via admin UI
 
 Configuration
 -------------
