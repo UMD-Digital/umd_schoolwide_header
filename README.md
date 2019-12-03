@@ -21,7 +21,7 @@ This module can also be added to projects via composer, with something similar t
 - `composer require umd_digital/umd_schoolwide_header --prefer-dist`
 - `drush en umd_schoolwide_header` or enable via admin UI
 
-## Configuration
+## CONFIGURATION
 
 - Add embed code to /admin/config/umd_schoolwide_header/config
 - This may be added with or without the script tags, the module will strip if needed.
