@@ -13,7 +13,7 @@ Please use the latest release for your version of drupal from the [releases page
 
 ## INSTALLATION
 
-Install as usual, see [installing-modules](https://www.drupal.org/docs/8/extending-drupal-8/installing-modules) for further
+Install as usual, see [installing modules](https://www.drupal.org/docs/8/extending-drupal-8/installing-modules) for further
 information.
 
 This module can also be added to projects via composer, with something similar to the following (adjust release version as necessary):
@@ -23,7 +23,7 @@ This module can also be added to projects via composer, with something similar t
 
 ## CONFIGURATION
 
-- Add embed code to /admin/config/umd_schoolwide_header/config
+- Add embed code to [the config page](/admin/config/umd_schoolwide_header/config).
 - This may be added with or without the script tags, the module will strip if needed.
 - A default is provided, so a default configuration will be loaded if left blank.
 

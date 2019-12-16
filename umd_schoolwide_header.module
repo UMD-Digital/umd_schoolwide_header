@@ -59,5 +59,4 @@ function umd_schoolwide_header_library_info_alter(&$libraries) {
       $libraries['umd_header']['js'][$js] = ['type' => 'external', 'preprocess' => FALSE];
     }
   }
-
 }
