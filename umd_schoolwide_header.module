@@ -14,7 +14,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function umd_schoolwide_header_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
-    case 'help.page.howard_newsroom_client':
+    case 'help.page.umd_schoolwide_header':
       $text = file_get_contents(dirname(__FILE__) . "/README.md");
       if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
         return '<pre>' . $text . '</pre>';
