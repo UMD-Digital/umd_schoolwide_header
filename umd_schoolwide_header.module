@@ -58,7 +58,7 @@ function umd_schoolwide_header_init() {
     $embed = str_replace('"></script>','',$embed);
 
   } else {
-    $embed = 'https://umd-header.umd.edu/build/bundle.js?search=0&search_domain=&events=0&news=0&schools=0&admissions=0&support=0&support_url=&wrapper=1100&sticky=0';
+    $embed = 'https://umd-header.umd.edu/build/bundle.js?search=0&events=0&news=0&schools=0&admissions=0&support=0&support_url=&wrapper=1100&sticky=0';
   }
 
   drupal_add_js($embed, array('type' => 'external', 'weight' => -20, 'scope' => 'footer'));
